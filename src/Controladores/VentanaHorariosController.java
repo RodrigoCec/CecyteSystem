@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -797,8 +796,8 @@ public class VentanaHorariosController implements Initializable {
         
     
         //Restricciones
-        restringirA1A59(txtMinutosEntradaLunes);
-        restringirA1A12(txtHoraEntradaLunes);
+        RestriccionMinutos(txtMinutosEntradaLunes);
+        RestriccionHoras(txtHoraEntradaLunes);
     }
     
     public void MetodosLunes(){
@@ -832,7 +831,7 @@ public class VentanaHorariosController implements Initializable {
         restringirAPatron(textField, "[a-zA-Z]*");
     }
 
-    public void restringirA1A59(TextField textField) {
+    public void RestriccionMinutos(TextField textField) {
         PauseTransition pause = new PauseTransition(Duration.millis(500));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             pause.setOnFinished(event -> {
@@ -869,7 +868,7 @@ public class VentanaHorariosController implements Initializable {
         });
     }
 
-    public void restringirA1A12(TextField textField) {
+    public void RestriccionHoras(TextField textField) {
         PauseTransition pause = new PauseTransition(Duration.millis(500));
         textField.textProperty().addListener((observable, oldValue, newValue) -> {
             pause.setOnFinished(event -> {
