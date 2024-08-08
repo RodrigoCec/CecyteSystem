@@ -1136,6 +1136,13 @@ public class VentanaHorariosController implements Initializable {
         LimitadorLongutid(txtMinutosEntradaLunes, 2);
    }
    
+   
+   public void metodoPruebaxd(){
+   
+   
+   }
+   
+   
    public void limitadoresParaGradoYGrupo(){
         
         restringirANumeros(txtGrado);
