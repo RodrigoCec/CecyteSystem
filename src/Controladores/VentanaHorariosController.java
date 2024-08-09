@@ -26,7 +26,12 @@ import javafx.util.Duration;
  * @author Rodrigo
  */
 public class VentanaHorariosController implements Initializable {
-
+    
+    
+    
+    
+    
+    //---------> Objetos <------
     @FXML
     private TextField txtGrupo;
     @FXML
@@ -192,25 +197,29 @@ public class VentanaHorariosController implements Initializable {
     private MenuItem txtEnfermeriaViernes;
     @FXML
     private MenuItem txtPuericulturaViernes;
+    @FXML
+    private TextField txtMinutosEntradaMartes;
     
-   
+    
+   //|-----------------------------|
 
     /**
      * Initializes the controller class.
      */
     
+   //------------> trabajos con la base de datos <-----------------
     
-    // Datos de la Conexion a Base de datos
+                // Datos de la Conexion a Base de datos
     private static final String bd = "basedatosprueba";
     private static final String direccion = "jdbc:mysql://localhost:3306/" + bd;
     private static final String usuario = "root";
     private static final String password = "";
 
-    // Conexión a la base de datos
-    private static Connection conexion;
+    
+    private static Connection conexion; // Conexión a la base de datos
 
-    // Código de conexión
-    public static Connection ConexionBd() {
+                // Código de conexión
+    public static Connection ConexionBd() {  
         try {
         if (conexion == null || conexion.isClosed()) {
             conexion = DriverManager.getConnection(direccion, usuario, password);
@@ -221,13 +230,8 @@ public class VentanaHorariosController implements Initializable {
     }
     return conexion;
     }
-    @FXML
-    private TextField txtMinutosEntradaMartes;
     
-    
-  
-     //Metodos para obtener datos
-     
+            //Metodos para obtener datos
     public String DatosDeBD(String Dia,String Grupo){
          String CodigoHorario =  "";
          
@@ -240,17 +244,16 @@ public class VentanaHorariosController implements Initializable {
                 if (resultSet.next()) {
                     CodigoHorario = resultSet.getString(Dia);
                     
-                    
-                    //System.out.println(CodigoHorario);
                 }
-                
             }
         } catch (SQLException error) {
             System.out.println("Error de obtencion de datos: " + error);
         }
-        
         return CodigoHorario;
      }
+    
+  
+    
     
     public String DatosDeBD(String Dia, String Semestre, String Grupo) {
         String CodigoHorario = "";
@@ -577,7 +580,7 @@ public class VentanaHorariosController implements Initializable {
         System.out.println("En este caso el editado es: " + editor);
         System.out.println("En este caso el posterior es: " + posterior);
         System.out.println("Codigo Remplazar: " + codigoRemplazar);
-        System.out.println("Codigo Completo: " + codigoCompleto);
+        System.out.println("Codigo Completo 1: " + codigoCompleto);
 
         return codigoCompleto;
     }
@@ -633,7 +636,7 @@ public class VentanaHorariosController implements Initializable {
         System.out.println("En este caso el editado es: " + editor);
         System.out.println("En este caso el posterior es: " + posterior);
         System.out.println("Codigo Remplazar: " + time);
-        System.out.println("Codigo Completo: " + codigoCompleto);
+        System.out.println("Codigo Completo 2: " + codigoCompleto);
 
         return codigoCompleto;
     }
@@ -1154,6 +1157,7 @@ public class VentanaHorariosController implements Initializable {
         
         ControladorDePrueba();
         ActualizadorDeRecuadroMinutos(DiasSemana.LUNES, txtMinutosEntradaLunes);
+       
        
         
         
